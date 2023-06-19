@@ -1,0 +1,97 @@
+.main {
+  position: relative;
+
+  .hero-title,
+  .hero-filter {
+    padding: 6.4rem 0rem 5.2rem;
+
+    @media (max-width: 575px) {
+      padding: 1rem 0rem !important;
+    }
+  }
+
+  .hero-title {
+    position: relative;
+
+    @media (max-width: 575px) {
+      margin-top: 2rem !important;
+    }
+
+    h1 {
+      font-size: 4rem;
+      color: var(--black);
+      font-family: var(--font-secondary), sans-serif;
+
+      .result {
+        font-size: 1.6rem !important;
+        font-family: var(--font-primary), sans-serif;
+        font-weight: 500;
+
+        line-height: 2rem;
+
+        color: var(--gray-300);
+      }
+
+      @media (max-width: 764px) {
+        font-size: 3rem;
+
+        .result {
+          font-size: 1.2rem !important;
+        }
+      }
+    }
+  }
+
+  .hero-filter {
+    text-align: right;
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .card-items {
+    margin-bottom: 1.8rem !important;
+  }
+
+  .pagination {
+    padding: 8rem 0 14.8rem;
+
+    justify-content: center;
+    align-items: center;
+    gap: 0.8rem;
+
+    .page-link {
+      font-size: 1.4rem;
+
+      border-radius: 0 !important;
+      border: none !important;
+
+      background-color: var(--background);
+
+      color: var(--black);
+
+      display: flex;
+      align-items: center;
+
+      &.active {
+        color: var(--white);
+        background-color: var(--black);
+        border-radius: 0.2rem !important;
+        font-weight: bold;
+
+        padding: 1rem 1rem;
+      }
+
+      svg {
+        width: 1.6rem;
+      }
+
+      &:focus {
+        box-shadow: none;
+        border: var(--border) !important;
+      }
+    }
+  }
+}

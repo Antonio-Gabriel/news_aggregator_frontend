@@ -1,0 +1,79 @@
+.btn {
+  padding: 1.2rem 1.6rem !important;
+
+  border-radius: 0.6rem !important;
+  border: 0 !important;
+
+  font-size: 1.4rem !important;
+  font-weight: 500 !important;
+
+  line-height: 1.7rem !important;
+
+  display: flex;
+  gap: 1.6rem;
+
+  svg {
+    width: 1.6rem;
+  }
+}
+
+.btn-primary {
+  background-color: var(--black) !important;
+  color: var(--white);
+
+  &:focus {
+    background-color: var(--black) !important;
+  }
+
+  &:hover {
+    filter: brightness(0.9);
+  }
+}
+
+.btn-logout {
+  background-color: var(--red) !important;
+  color: var(--white) !important;
+
+  &:focus {
+    background-color: var(--red) !important;
+  }
+
+  &:hover {
+    filter: brightness(0.9);
+  }
+}
+
+.btn-secondary {
+  background-color: var(--background) !important;
+  color: var(--400) !important;
+
+  &:focus {
+    background-color: var(--background) !important;
+  }
+
+  &:hover {
+    background-color: var(--black) !important;
+    color: var(--white) !important;
+  }
+}
+
+.btn-secondary-with-border {
+  background-color: var(--background) !important;
+  color: var(--400) !important;
+
+  border: 2px solid var(--gray-200) !important;
+
+  &:focus {
+    border-color: var(--black) !important;
+  }
+
+  &:hover {
+    background-color: var(--black) !important;
+    color: var(--white) !important;
+  }
+
+  &.active {
+    background-color: var(--black) !important;
+    color: var(--white) !important;
+  }
+}

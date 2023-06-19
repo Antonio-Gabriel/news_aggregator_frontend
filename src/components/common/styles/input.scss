@@ -1,0 +1,65 @@
+.form-component {
+  label {
+    font-size: 1.2rem;
+    font-weight: 500;
+
+    line-height: 1.5rem;
+
+    margin-bottom: 1.2rem;
+  }
+
+  &.set-error {
+    small {
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: var(--red);
+    }
+
+    .input-group {
+      border: 2px solid red !important;
+    }
+  }
+
+  .form-control {
+    padding: 1rem 2.2rem;
+
+    background-color: transparent !important;
+
+    border-radius: 0;
+    border: 0;
+
+    outline: none !important;
+
+    font-size: 1.2rem;
+    line-height: 1.5rem;
+
+    color: var(--black);
+
+    &:focus {
+      box-shadow: none !important;
+    }
+  }
+
+  .input-group {
+    width: 100%;
+    height: 5.2rem;
+
+    border: var(--border);
+  }
+
+  .input-group-text {
+    background-color: var(--white) !important;
+    padding-right: 2.2rem;
+
+    border-radius: 0 !important;
+    border: 0 !important;
+
+    svg {
+      width: 2rem !important;
+    }
+
+    .show-password {
+      cursor: pointer !important;
+    }
+  }
+}

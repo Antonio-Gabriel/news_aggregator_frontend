@@ -1,0 +1,56 @@
+footer {
+  padding: 6.2rem 0 8.2rem;
+  border-top: var(--border);
+
+  .newsletter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h2 {
+      font-family: var(--font-secondary), sans-serif;
+      font-size: 2.4rem;
+
+      line-height: 3.5rem;
+    }
+
+    .form-newsletter {
+      padding: 3.5rem 0 3.2rem;
+    }
+
+    .input-size {
+      width: 36rem;
+    }
+
+    .nav-social-link {
+      display: flex;
+      gap: 1.8rem;
+
+      margin-bottom: 6.6rem;
+
+      .nav-link {
+        font-size: 1.4rem;
+        font-weight: 500;
+
+        line-height: 1.7rem;
+
+        color: var(--gray-300);
+
+        &.active {
+          color: var(--black);
+        }
+      }
+    }
+  }
+
+  .copyright {
+    text-align: center;
+
+    p {
+      color: var(--black);
+
+      font-size: 1.4rem;
+      line-height: 1.7rem;
+    }
+  }
+}

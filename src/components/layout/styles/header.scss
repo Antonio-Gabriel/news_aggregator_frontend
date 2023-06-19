@@ -1,0 +1,53 @@
+header {
+  padding: 1.4rem 1rem;
+  border-bottom: var(--border-default);
+
+  .navbar-brand {
+    margin-right: 3.6rem;
+  }
+
+  .navbar-toggler {
+    border: 0 !important;
+    outline: 0 !important;
+    svg {
+      width: 2.5rem;
+    }
+  }
+
+  .content {
+  }
+  .navbar-nav {
+    gap: 1.8rem !important;
+
+    @media (max-width: 991px) {
+      margin: 1.6rem 0;
+    }
+
+    .nav-link {
+      padding: 0 !important;
+
+      font-size: 1.4rem;
+      font-weight: 500;
+
+      line-height: 1.7rem;
+
+      color: var(--gray-300);
+
+      &.active {
+        color: var(--black);
+      }
+    }
+  }
+
+  .cta {
+    gap: 0.8rem;
+
+    @media (max-width: 991px) {
+      flex-direction: column;
+      button {
+        width: 100% !important;
+        height: 5rem;
+      }
+    }
+  }
+}
