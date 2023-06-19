@@ -21,11 +21,11 @@ To start the application follow the next steps:
 
 ```bash
 
-git clone 
+git clone git@github.com:Antonio-Gabriel/news_aggregator_frontend.git
 
-cd 
+cd news_aggregator_frontend
 
-npm i
+npm install
 
 npm run dev
 
