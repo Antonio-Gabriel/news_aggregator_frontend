@@ -1,6 +1,6 @@
 import { Collapse } from 'reactstrap'
-import { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useState } from 'react'
+import { useSelector } from 'react-redux'
 
 import { Link } from 'react-router-dom'
 import { UserInfo } from '../user-info'
@@ -12,7 +12,6 @@ import { SignUpModal } from '../common/sign-up-modal'
 import logo from '../../assets/images/logo.svg'
 
 import { RootState } from '../../app/store'
-import { authenticationObserver } from '../../app/feactures/auth-slice'
 
 import './styles/header.scss'
 
@@ -21,12 +20,7 @@ export function Header() {
   const [isOpenSignInModal, setIsOpenSignInModal] = useState(false)
   const [isOpenSignUpModal, setIsOpenSignUpModal] = useState(false)
 
-  const dispatch = useDispatch()
   const { isAuth } = useSelector((state: RootState) => state.auth)
-
-  useEffect(() => {
-    dispatch(authenticationObserver())
-  }, [])
 
   const toggleMenu = () => setIsOpenMenu(!isOpenMenu)
   const toggleSignInModal = () => setIsOpenSignInModal(!isOpenSignInModal)

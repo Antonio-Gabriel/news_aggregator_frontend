@@ -7,6 +7,7 @@ import { extractDataFromArticles } from '../app/feactures/data-extractor-slice'
 export function useMapper(articles: Article[]) {
   let categories: App.Module.CategoryProps[] = []
   let sources: string[] = []
+  let authors: string[] = []
 
   const dispatch = useDispatch()
 
@@ -24,6 +25,16 @@ export function useMapper(articles: Article[]) {
 
       if (
         !isOnList(
+          authors,
+          article.author,
+          (author, article) => author == article,
+        )
+      ) {
+        authors.push(article.author)
+      }
+
+      if (
+        !isOnList(
           categories,
           article.category,
           (category, articleCategory) => category.name == articleCategory.name,
@@ -37,6 +48,7 @@ export function useMapper(articles: Article[]) {
       extractDataFromArticles({
         categories,
         sources,
+        authors,
       }),
     )
   }, [articles])

@@ -5,8 +5,8 @@ declare namespace Authentication {
       type: string
     }
 
-    export type AuthenticationProps = {
-      user?: App.Module.UserProps
+    type AuthenticationProps = {
+      user?: Omit<App.Module.UserProps, 'password'>
       authorization?: AuthorizationProps
       settings?: App.Module.SettingsProps
     }

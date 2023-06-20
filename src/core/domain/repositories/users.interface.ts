@@ -5,7 +5,7 @@ export type UserResponse = {
 }
 
 export interface UsersRepositoryInterface {
-  register(user: App.Module.UserData): Promise<UserResponse>
+  register(user: User): Promise<UserResponse>
   auth(
     email: string,
     password: string,

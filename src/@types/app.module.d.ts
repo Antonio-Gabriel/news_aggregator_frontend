@@ -26,17 +26,24 @@ declare namespace App {
       dateRange: string
     }
 
-    export type SettingsProps = {
+    type SettingsProps = {
       id: number
       metadata: string
     }
 
-    export type UserProps = {
-      id: number
+    type SettingMetadataProps = {
+      categories?: string
+      authors?: string
+      sources?: string
+    }
+
+    type UserProps = {
+      id?: number
       name: string
       email: string
-      created_at: string
-      updated_at: string
+      password: string
+      created_at?: string
+      updated_at?: string
     }
 
     type UserData = Omit<

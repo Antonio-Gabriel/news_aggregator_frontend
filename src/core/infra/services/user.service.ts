@@ -3,15 +3,12 @@ import {
   UserResponse,
   UsersRepositoryInterface,
 } from '../../domain/repositories/users.interface'
+import { User } from '../../domain/entities/user'
 
 export class UserService implements UsersRepositoryInterface {
   public constructor(private http: AxiosInstance) {}
 
-  async register({
-    name,
-    email,
-    password,
-  }: App.Module.UserData): Promise<UserResponse> {
+  async register({ name, email, password }: User): Promise<UserResponse> {
     return await this.http
       .post('/users', { name, email, password })
       .then((response) => response.data)

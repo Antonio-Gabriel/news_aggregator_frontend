@@ -11,5 +11,5 @@ export type ArticleResponse = {
 export interface ArticlesRepositoryInterface {
   get(): Promise<ArticlesResponse>
   getById(articleId: number): Promise<ArticleResponse>
-  getCustoms(): Promise<ArticlesResponse>
+  getCustoms(props: App.Module.SettingMetadataProps): Promise<ArticlesResponse>
 }

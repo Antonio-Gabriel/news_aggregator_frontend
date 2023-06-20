@@ -1,7 +1,7 @@
 export class User {
   constructor(public props: App.Module.UserProps) {}
 
-  public get id(): number {
+  public get id(): number | undefined {
     return this.props.id
   }
 
@@ -9,11 +9,19 @@ export class User {
     return this.props.name
   }
 
-  public get created_at(): string {
+  public get email(): string {
+    return this.props.email
+  }
+
+  public get password(): string {
+    return this.props.password
+  }
+
+  public get created_at(): string | undefined {
     return this.props.created_at
   }
 
-  public get updated_at(): string {
+  public get updated_at(): string | undefined {
     return this.props.updated_at
   }
 

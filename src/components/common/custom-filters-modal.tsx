@@ -2,6 +2,9 @@ import { FormEvent, useState } from 'react'
 import { Modal } from 'reactstrap'
 import { Button } from './button'
 
+import { RootState } from '../../app/store'
+import { useSelector } from 'react-redux'
+
 import './styles/modal.scss'
 
 type CustomFiltersModalProps = {
@@ -11,6 +14,10 @@ type CustomFiltersModalProps = {
 
 export function CustomFiltersModal(props: CustomFiltersModalProps) {
   const [focusAfterClose, setFocusAfterClose] = useState(true)
+
+  const { categories, sources, authors } = useSelector(
+    (state: RootState) => state.dataExtracteds,
+  )
 
   function handleSubmit(e: FormEvent) {
     e.preventDefault()
@@ -42,10 +49,12 @@ export function CustomFiltersModal(props: CustomFiltersModalProps) {
           <div className="modal-body">
             <div className="form-group">
               <select className="form-select form-select-custom">
-                <option>Sources</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+                <option value="1">Choose your prefered categories</option>
+                {categories.map((category) => (
+                  <option value={category.id} key={category.id}>
+                    {category.name}
+                  </option>
+                ))}
               </select>
 
               <ul className="nav-list">
@@ -91,10 +100,12 @@ export function CustomFiltersModal(props: CustomFiltersModalProps) {
             </div>
             <div className="form-group">
               <select className="form-select form-select-custom">
-                <option>Authors</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+                <option value="1">Choose your prefered authors</option>
+                {authors.map((author, index) => (
+                  <option value={author} key={index}>
+                    {author}
+                  </option>
+                ))}
               </select>
 
               <ul className="nav-list">
@@ -159,10 +170,12 @@ export function CustomFiltersModal(props: CustomFiltersModalProps) {
             </div>
             <div className="form-group">
               <select className="form-select form-select-custom">
-                <option>Categories</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+                <option>Choose your prefered sources</option>
+                {sources.map((source, index) => (
+                  <option value={source} key={index}>
+                    {source}
+                  </option>
+                ))}
               </select>
 
               <ul className="nav-list">

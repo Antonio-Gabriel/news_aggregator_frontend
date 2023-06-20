@@ -9,6 +9,7 @@ import { GetArticleByIdQuery } from './domain/system/queries/get-article.query'
 
 import { CreateUserUsecase } from './domain/system/usecases/create-user-usecase'
 import { AuthenticateUserUsecase } from './domain/system/usecases/authenticate-user-usecase'
+import { GetCustomArticlesQuery } from './domain/system/queries/get-custom-articles.query'
 
 export const Registry = {
   AxiosAdapter: Symbol.for('AxiosAdapter'),
@@ -18,6 +19,7 @@ export const Registry = {
   // queries
   GetArticlesQuery: Symbol.for('GetArticlesQuery'),
   GetArticleByIdQuery: Symbol.for('GetArticleByIdQuery'),
+  GetCustomArticlesQuery: Symbol.for('GetCustomArticlesQuery'),
 
   // usecases
   AuthenticateUserUsecase: Symbol.for('AuthenticateUserUsecase'),
@@ -46,6 +48,14 @@ container.bind(Registry.GetArticlesQuery).toDynamicValue((context: any) => {
 container.bind(Registry.GetArticleByIdQuery).toDynamicValue((context: any) => {
   return new GetArticleByIdQuery(context.container.get(Registry.ArticleService))
 })
+
+container
+  .bind(Registry.GetCustomArticlesQuery)
+  .toDynamicValue((context: any) => {
+    return new GetCustomArticlesQuery(
+      context.container.get(Registry.ArticleService),
+    )
+  })
 
 // Usecases
 container
