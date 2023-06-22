@@ -1,18 +1,15 @@
 import { toast } from 'react-toastify'
+import { useSelector } from 'react-redux'
 import { RootState } from '../../app/store'
-import { useDispatch, useSelector } from 'react-redux'
 
+import { useAuth } from '../user/use-auth'
+import { settingsParser } from '../../utils/settings-parser'
 import { Registry, container } from '../../core/container.config'
-import { authenticationObserver } from '../../app/feactures/auth-slice'
 import { GetArticlesQuery } from '../../core/domain/system/queries/get-articles.query'
 import { GetCustomArticlesQuery } from '../../core/domain/system/queries/get-custom-articles.query'
 
-type RenderType = {
-  renderType: 'DEFAULT' | null
-}
-
-export function useArticles({ renderType }: RenderType) {
-  const dispatch = useDispatch()
+export function useArticles() {
+  const { signOut } = useAuth()
   const { isAuth, settings } = useSelector((state: RootState) => state.auth)
 
   const queryResult = container.get<GetArticlesQuery>(Registry.GetArticlesQuery)
@@ -20,22 +17,18 @@ export function useArticles({ renderType }: RenderType) {
     Registry.GetCustomArticlesQuery,
   )
 
-  if (renderType == 'DEFAULT') return queryResult.execute()
-
   if (isAuth && settings != null) {
-    const settingsParsed = JSON?.parse(
-      settings?.metadata ?? '',
-    ) as App.Module.SettingMetadataProps
+    const settingsParsed = settingsParser(settings?.metadata)
 
     const articles = customQueryResult.execute(settingsParsed)
 
     if (articles.isError) {
+      signOut()
       toast.warning('Ops, your session expired, try to signIn again')
-      dispatch(authenticationObserver())
     }
 
     return articles
   }
 
-  return queryResult.execute()
+  return queryResult.execute('articles')
 }
