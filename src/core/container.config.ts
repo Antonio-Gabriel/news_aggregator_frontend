@@ -3,18 +3,21 @@ import { Container } from 'inversify'
 import { http } from './infra/http'
 import { UserService } from './infra/services/user.service'
 import { ArticleService } from './infra/services/articles.service'
+import { SettingService } from './infra/services/setting.service'
 
 import { GetArticlesQuery } from './domain/system/queries/get-articles.query'
 import { GetArticleByIdQuery } from './domain/system/queries/get-article.query'
 
 import { CreateUserUsecase } from './domain/system/usecases/create-user-usecase'
-import { AuthenticateUserUsecase } from './domain/system/usecases/authenticate-user-usecase'
 import { GetCustomArticlesQuery } from './domain/system/queries/get-custom-articles.query'
+import { AuthenticateUserUsecase } from './domain/system/usecases/authenticate-user-usecase'
+import { CreateUserSettingsUsecase } from './domain/system/usecases/setting/create-user-setting-usecase'
 
 export const Registry = {
   AxiosAdapter: Symbol.for('AxiosAdapter'),
   ArticleService: Symbol.for('ArticleService'),
   UserService: Symbol.for('UserService'),
+  SettingService: Symbol.for('SettingService'),
 
   // queries
   GetArticlesQuery: Symbol.for('GetArticlesQuery'),
@@ -24,6 +27,7 @@ export const Registry = {
   // usecases
   AuthenticateUserUsecase: Symbol.for('AuthenticateUserUsecase'),
   CreateUserUsecase: Symbol.for('CreateUserUsecase'),
+  CreateUserSettingsUsecase: Symbol.for('CreateUserSettingsUsecase'),
 }
 
 export const container = new Container()
@@ -38,6 +42,10 @@ container.bind(Registry.ArticleService).toDynamicValue((context: any) => {
 
 container.bind(Registry.UserService).toDynamicValue((context: any) => {
   return new UserService(context.container.get(Registry.AxiosAdapter))
+})
+
+container.bind(Registry.SettingService).toDynamicValue((context: any) => {
+  return new SettingService(context.container.get(Registry.AxiosAdapter))
 })
 
 // Queries
@@ -69,3 +77,11 @@ container
 container.bind(Registry.CreateUserUsecase).toDynamicValue((context: any) => {
   return new CreateUserUsecase(context.container.get(Registry.UserService))
 })
+
+container
+  .bind(Registry.CreateUserSettingsUsecase)
+  .toDynamicValue((context: any) => {
+    return new CreateUserSettingsUsecase(
+      context.container.get(Registry.SettingService),
+    )
+  })
