@@ -6,8 +6,8 @@ import { ArticleService } from '../../../infra/services/articles.service'
 export class GetArticlesQuery implements SystemContract {
   constructor(private service: ArticleService) {}
 
-  execute(): UseQueryResult {
-    const queryResult = useQuery('articles', () => this.service.get())
+  execute(queryKey: string): UseQueryResult {
+    const queryResult = useQuery(queryKey, () => this.service.get())
 
     const transformedData = queryResult.data?.data.map(
       (article) => new Article(article),
