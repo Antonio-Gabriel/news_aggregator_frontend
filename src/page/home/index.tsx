@@ -35,14 +35,15 @@ export function Home() {
   const toggleCustomFiltersModal = () =>
     setIsOpenCustomFiltersModal(!isOpenCustomFiltersModal)
 
-  const { data, isLoading } = useArticles({ renderType: null })
+  const { data, isLoading } = useArticles()
   useMapper(data as Article[])
+
   const filtersData = useSelector((state: RootState) => state.filters)
   const [filters, setFilters] = useState({} as App.Module.FiltersProps)
   useFilterTags(filters)
 
   const filteredArticles = useFilters(data as Article[], filters)
-  
+
   const { isAuth } = useSelector((state: RootState) => state.auth)
 
   useEffect(() => {
