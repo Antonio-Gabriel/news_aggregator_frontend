@@ -1,8 +1,8 @@
+import authSlice from './feactures/auth-slice'
 import { configureStore } from '@reduxjs/toolkit'
 import filtersSlice from './feactures/filters-slice'
-import dataExtractorSlice from './feactures/data-extractor-slice'
 import filtersTagSlice from './feactures/filters-tag-slice'
-import authSlice from './feactures/auth-slice'
+import dataExtractorSlice from './feactures/data-extractor-slice'
 
 export const store = configureStore({
   reducer: {
